@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Article Image Generation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .image-container {
+            display: inline-block;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .waiting {
+            display: none;
+            margin-top: 20px;
+        }
+        .waiting img {
+            width: 50px;
+            height: 50px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function processArticle() {
+                $('.image-container').empty();
+                $('.waiting').show();
+                $.ajax({
+                    url: '/',
+                    method: 'POST',
+                    data: $('form').serialize(),
+                    success: function(response) {
+                        $('#core-message').text(response.core_message);
+                        $('#abstract-depiction').val(response.abstract_depiction);
+                        $('.waiting').hide();
+                    }
+                });
+            }
+
+            $('form').submit(function(event) {
+                event.preventDefault();
+                processArticle();
+            });
+
+            $('#try-again').click(function() {
+                processArticle();
+            });
+
+            $('#generate-image').click(function() {
+                $('.image-container').empty();
+                $('.waiting').show();
+                $.ajax({
+                    url: '/generate',
+                    method: 'POST',
+                    data: {
+                        'article': $('#article').val(),
+                        'core_message': $('#core-message').text(),
+                        'prompt': $('#abstract-depiction').val()
+                    },
+                    success: function(response) {
+                        var imageName = response.image_name;
+                        var imageUrl = '/static/images/' + imageName;
+                        var img = $('<img>').attr('src', imageUrl).attr('alt', 'Generated Image');
+                        img.on('load', function() {
+                            $('.waiting').hide();
+                            $('.image-container').html('<h2>Generated Image:</h2>').append(img);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>
+            <img src="/static/logo.jpg" alt="Logo" class="logo">
+            Visual Prose
+        </h1>
+        <form>
+            <div class="form-group">
+                <label for="article"><h3>Article</h3></label>
+                <textarea class="form-control" id="article" name="article" rows="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Extract Core Message and Abstract Depiction</button>
+        </form>
+        <div class="mt-4">
+            <h3>Core Message</h3>
+            <p id="core-message" class="lead"></p>
+        </div>
+        <div class="mt-4">
+            <h3>Abstract Depiction</h3>
+            <textarea class="form-control" id="abstract-depiction" rows="3"></textarea>
+            <button id="generate-image" class="btn btn-success mt-3">Generate Image</button>
+            <button id="try-again" class="btn btn-primary mt-3">Try Again</button>
+        </div>
+        <div class="waiting mt-4">
+            <img src="/static/waiting.gif" alt="Waiting...">
+        </div>
+        <div class="image-container mt-4"></div>
+    </div>
+</body>
+</html>
