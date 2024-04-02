@@ -27,14 +27,16 @@ https://ai.google.dev/tutorials/setup
 https://huggingface.co/dataautogpt3/ProteusV0.4
 
 ## Examples
-Article: https://timdettmers.com/2022/03/13/how-to-choose-your-grad-school/
-Abstract Depiction:
-<img src="https://github.com/Patchwork53/VisualProse/blob/main/resources/dettmers_grad.png?raw=true" width=400>
+Article: https://timdettmers.com/2022/03/13/how-to-choose-your-grad-school/<br>
+Abstract Depiction:<br>
+<img src="https://github.com/Patchwork53/VisualProse/blob/main/resources/dettmers_grad.png?raw=true" width=400><br>
 <br>
-Article: https://timdettmers.com/2019/09/03/creativity-in-academia/
-Abstract Depiction:
-<img src="https://github.com/Patchwork53/VisualProse/blob/main/resources/dettmers_creativity.png?raw=true" width=400>
 <br>
-Article: https://www.thedailystar.net/supplements/independence-day-special-2015/the-fabric-identity-73752
-Abstract Depiction:
+Article: https://timdettmers.com/2019/09/03/creativity-in-academia/<br>
+Abstract Depiction:<br>
+<img src="https://github.com/Patchwork53/VisualProse/blob/main/resources/dettmers_creativity.png?raw=true" width=400><br>
+<br>
+<br>
+Article: https://www.thedailystar.net/supplements/independence-day-special-2015/the-fabric-identity-73752<br>
+Abstract Depiction:<br>
 <img src="https://github.com/Patchwork53/VisualProse/blob/main/resources/bengal.png?raw=true" width=400>
