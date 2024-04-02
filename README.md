@@ -29,7 +29,7 @@ https://huggingface.co/dataautogpt3/ProteusV0.4
 ## Examples
 Article: https://timdettmers.com/2022/03/13/how-to-choose-your-grad-school/
 Abstract Depiction:
-<img src="https://github.com/Patchwork53/VisualProse/blob/main/resources/dettmers_grad_school.png?raw=true" width=400>
+<img src="https://github.com/Patchwork53/VisualProse/blob/main/resources/dettmers_grad.png?raw=true" width=400>
 <br>
 Article: https://timdettmers.com/2019/09/03/creativity-in-academia/
 Abstract Depiction:
